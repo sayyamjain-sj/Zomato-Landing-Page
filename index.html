@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/x-icon"
+    href="https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Zomato_logo.png/220px-Zomato_logo.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <title>Zomato Clone</title>
+  <style type="text/css">
+    @font-face {
+      font-family: Okra;
+      font-display: swap;
+      src: url(https://b.zmtcdn.com/web_assets/bac203052382824f8c8fcd7668417f771597997180.woff2) format('woff2'), url(https://b.zmtcdn.com/web_assets/9dd3d8fd6150ab3f8106f4a073d054521597921546.ttf) format('truetype');
+      font-style: normal;
+      font-weight: 100
+    }
+
+    @font-face {
+      font-family: Okra;
+      font-display: swap;
+      src: url(https://b.zmtcdn.com/web_assets/0256637bc22e4c9e069ad868c196d29f1597997099.woff2) format('woff2'), url(https://b.zmtcdn.com/web_assets/0a2cb1a22221afd4a5c4f59bde89afda1597921603.ttf) format('truetype');
+      font-style: normal;
+      font-weight: 200
+    }
+
+    @font-face {
+      font-family: Okra;
+      font-display: swap;
+      src: url(https://b.zmtcdn.com/web_assets/081152f7adf53200c7f8789005ca54ca1597997115.woff2) format('woff2'), url(https://b.zmtcdn.com/web_assets/6651f01000a2e122e587bb2282cb3ea21597921594.ttf) format('truetype');
+      font-style: normal;
+      font-weight: 300
+    }
+
+    @font-face {
+      font-family: Okra;
+      font-display: swap;
+      src: url(https://b.zmtcdn.com/web_assets/c750382e5207a1a41cdcb496ef2326d51597997149.woff2) format('woff2'), url(https://b.zmtcdn.com/web_assets/aead83936ff20e860667e0a18f26d7571597921574.ttf) format('truetype');
+      font-style: normal;
+      font-weight: 400
+    }
+
+    @font-face {
+      font-family: Okra;
+      font-display: swap;
+      src: url(https://b.zmtcdn.com/web_assets/b27921d5a95f787012c8e9dfbb86c2751597997132.woff2) format('woff2'), url(https://b.zmtcdn.com/web_assets/1674f573eef1f8ba15be69b44aab4d401597921585.ttf) format('truetype');
+      font-style: normal;
+      font-weight: 500
+    }
+
+    @font-face {
+      font-family: Okra;
+      font-display: swap;
+      src: url(https://b.zmtcdn.com/web_assets/8e7505f4e7be967217d81781b49425bc1597997165.woff2) format('woff2'), url(https://b.zmtcdn.com/web_assets/df06bf5a1ce831e889b3b07f3bab84d61597921557.ttf) format('truetype');
+      font-style: normal;
+      font-weight: 600
+    }
+
+    @font-face {
+      font-family: Okra;
+      font-display: swap;
+      src: url(https://b.zmtcdn.com/web_assets/1792d65b5545ef5781d92cf519ad47c21597997060.woff2) format('woff2'), url(https://b.zmtcdn.com/web_assets/def01ba19fdf2476f0fc1904e4195e011597921623.ttf) format('truetype');
+      font-style: normal;
+      font-weight: 700
+    }
+
+    @font-face {
+      font-family: Okra;
+      font-display: swap;
+      src: url(https://b.zmtcdn.com/web_assets/c596984d29a9ca0a7995ac6f4d9ac6461597997080.woff2) format('woff2'), url(https://b.zmtcdn.com/web_assets/e791ade4b99ef84be3ac11a07f2a774c1597921614.ttf) format('truetype');
+      font-style: normal;
+      font-weight: 800
+    }
+
+    @font-face {
+      font-family: 'Wasabi';
+      font-display: swap;
+      src: url('https://b.zmtcdn.com/web_assets/a99e8b7f827877c2f943491006e80b831658822634.ttf') format('truetype'), url('https://b.zmtcdn.com/web_assets/d2044bdceb07dc2b9fc869d73366ae2c1658822615.woff2') format('woff2'), url('https://b.zmtcdn.com/web_assets/43d75ebac54f70f09f0ad4deda6ba5121658825373.woff') format('woff');
+      font-style: normal;
+      unicode-range: U+0-10FFFF;
+    }
+
+    body,
+    html {
+      margin: 0;
+      padding: 0;
+      font-size: 62.5%;
+      font-weight: 300;
+      box-sizing: border-box
+    }
+
+    body,
+    button,
+    textarea,
+    input,
+    input::-webkit-input-placeholder {
+      font-family: Okra, Helvetica, sans-serif;
+    }
+
+    body,
+    button,
+    input,
+    input::-moz-placeholder {
+      font-family: Okra, Helvetica, sans-serif
+    }
+
+    body,
+    button,
+    input,
+    input:-ms-input-placeholder {
+      font-family: Okra, Helvetica, sans-serif
+    }
+
+    body,
+    button,
+    input,
+    input::placeholder {
+      font-family: Okra, Helvetica, sans-serif
+    }
+
+    *,
+    :after,
+    :before {
+      box-sizing: inherit;
+      -webkit-tap-highlight-color: transparent
+    }
+
+    :active,
+    :focus {
+      outline: 0
+    }
+
+    @media (hover:none) {
+
+      :active,
+      :focus {
+        outline: 0 !important
+      }
+    }
+
+    @media screen and (prefers-reduced-motion:reduce) {
+      * {
+        -webkit-animation-play-state: paused !important;
+        animation-play-state: paused !important;
+        -webkit-transition: none !important;
+        transition: none !important;
+        -webkit-scroll-behavior: auto !important;
+        -moz-scroll-behavior: auto !important;
+        -ms-scroll-behavior: auto !important;
+        scroll-behavior: auto !important
+      }
+    }
+
+    div,
+    p,
+    span {
+      font-size: 1.6rem
+    }
+  </style>
+</head>
+
+<body>
+  <section class="hero__section">
+    <header>
+      <nav class="navbar">
+        <a href="#">Get The App</a>
+        <div class="navbar__menu_container">
+          <a href="#" class="link">Investor Relations</a>
+          <a href="#" class="link">Add Restaurant</a>
+          <a href="#" class="link">Log In</a>
+          <a href="#" class="link">Sign Up</a>
+          <a href="#" class="user__icon">
+            <i class="fa-solid fa-user"></i>
+          </a>
+        </div>
+      </nav>
+    </header>
+    <div class="hero__section_container">
+      <img class="hero__section_logo" src="images/heroSectionLogo.png" alt="Zomato Logo" />
+      <h1 class="hero__section_title">
+        Deliver the best food & drinks in Delhi NCR
+      </h1>
+      <div class="hero__section_input_container">
+        <input class="input_container_location" type="text" placeholder="Malad, Mindspace, Malad" />
+        <input class="input_container_search" type="text" placeholder="Search for a restaurant, cuisine or a dish" />
+      </div>
+    </div>
+  </section>
+
+  <section class="container we__offer">
+    <div class="card">
+      <img src="images/item1.png" alt="" />
+      <h2>Order Online</h2>
+      <p>Stay home and order to your dooretep</p>
+    </div>
+    <div class="card">
+      <img src="images/item2.png" alt="" />
+      <h2>Dining</h2>
+      <p>View the city's favourite dining venues</p>
+    </div>
+    <div class="card">
+      <img src="images/item3.png" alt="" />
+      <h2>Nightlife and Clubs</h2>
+      <p>Explore the city’s top nightlife outlets</p>
+    </div>
+  </section>
+
+  <section class="container collections">
+    <h1 class="collections">Collections</h1>
+    <div class="sub__heading_container">
+      <span>
+        Explore curated lists of top restaurants, cafes, pubs, and bars in
+        Delhi NCR, based on trends
+      </span>
+      <span>All collections in Delhi NCR</span>
+    </div>
+    <div class="collections_card_container">
+      <div class="card card1">
+        <div class="overlay"></div>
+        <div class="content">
+          <h4>Live Cricket Screening</h4>
+          <span>58 Place</span>
+        </div>
+      </div>
+
+      <div class="card card2">
+        <div class="overlay"></div>
+        <div class="content">
+          <h4>Ramadan Special</h4>
+          <span>22 Place</span>
+        </div>
+      </div>
+
+      <div class="card card3">
+        <div class="overlay"></div>
+        <div class="content">
+          <h4>Newly Opened</h4>
+          <span>20 Place</span>
+        </div>
+      </div>
+
+      <div class="card card4">
+        <div class="overlay"></div>
+        <div class="content">
+          <h4>Trending This Week</h4>
+          <span>30 Place</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="title">
+    <p class="sc-1hez2tp-0 sc-gNJABI kfvvVp">Popular localities in and around Mumbai</p>
+  </div>
+  <div>
+    <div class="sc-bke1zw-0 fIuLDK">
+      <div class="sc-bke1zw-1 gLbmAn">
+        <div class="sc-jkCMRl eSgewU panel">
+          <div class="sc-bqjOQT FzDzU img-title-box">
+            <h5 class="sc-1uh2q3e-0 sc-gGCbJM cTLDgh">Lower Parel</h5>
+            <p class="sc-1hez2tp-0 bBZBLJ">384 places</p>
+          </div><i class="sc-rbbb40-1 iFnyeo sc-lcpuFF jVajnH" size="15" color="#1C1C1C"><svg
+              xmlns="http://www.w3.org/2000/svg" fill="#1C1C1C" width="15" height="15" viewBox="0 0 20 20"
+              aria-labelledby="icon-svg-title- icon-svg-desc-" role="img" class="sc-rbbb40-0 jKmKoK">
+              <title>chevron-right</title>
+              <path
+                d="M6.98 15.94c-0.3-0.28-0.3-0.76 0-1.060l4.46-4.46-4.46-4.48c-0.3-0.28-0.3-0.76 0-1.060s0.76-0.28 1.060 0l5 5c0.28 0.3 0.28 0.78 0 1.060l-5 5c-0.3 0.3-0.78 0.3-1.060 0z">
+              </path>
+            </svg></i>
+        </div>
+        </a>
+      </div>
+      <div class="sc-bke1zw-1 gGzIKR">
+        <div class="sc-jkCMRl eSgewU panel">
+          <div class="sc-bqjOQT FzDzU img-title-box">
+            <h5 class="sc-1uh2q3e-0 sc-gGCbJM cTLDgh">Powai</h5>
+            <p class="sc-1hez2tp-0 bBZBLJ">359 places</p>
+          </div><i class="sc-rbbb40-1 iFnyeo sc-lcpuFF jVajnH" size="15" color="#1C1C1C"><svg
+              xmlns="http://www.w3.org/2000/svg" fill="#1C1C1C" width="15" height="15" viewBox="0 0 20 20"
+              aria-labelledby="icon-svg-title- icon-svg-desc-" role="img" class="sc-rbbb40-0 jKmKoK">
+              <title>chevron-right</title>
+              <path
+                d="M6.98 15.94c-0.3-0.28-0.3-0.76 0-1.060l4.46-4.46-4.46-4.48c-0.3-0.28-0.3-0.76 0-1.060s0.76-0.28 1.060 0l5 5c0.28 0.3 0.28 0.78 0 1.060l-5 5c-0.3 0.3-0.78 0.3-1.060 0z">
+              </path>
+            </svg></i>
+        </div>
+        </a>
+      </div>
+      <div class="sc-bke1zw-1 jdRPl">
+        <div class="sc-jkCMRl eSgewU panel">
+          <div class="sc-bqjOQT FzDzU img-title-box">
+            <h5 class="sc-1uh2q3e-0 sc-gGCbJM cTLDgh">Malad West</h5>
+            <p class="sc-1hez2tp-0 bBZBLJ">775 places</p>
+          </div><i class="sc-rbbb40-1 iFnyeo sc-lcpuFF jVajnH" size="15" color="#1C1C1C"><svg
+              xmlns="http://www.w3.org/2000/svg" fill="#1C1C1C" width="15" height="15" viewBox="0 0 20 20"
+              aria-labelledby="icon-svg-title- icon-svg-desc-" role="img" class="sc-rbbb40-0 jKmKoK">
+              <title>chevron-right</title>
+              <path
+                d="M6.98 15.94c-0.3-0.28-0.3-0.76 0-1.060l4.46-4.46-4.46-4.48c-0.3-0.28-0.3-0.76 0-1.060s0.76-0.28 1.060 0l5 5c0.28 0.3 0.28 0.78 0 1.060l-5 5c-0.3 0.3-0.78 0.3-1.060 0z">
+              </path>
+            </svg></i>
+        </div>
+        </a>
+      </div>
+      <div class="sc-bke1zw-1 gLbmAn">
+        <div class="sc-jkCMRl eSgewU panel">
+          <div class="sc-bqjOQT FzDzU img-title-box">
+            <h5 class="sc-1uh2q3e-0 sc-gGCbJM cTLDgh">Borivali West</h5>
+            <p class="sc-1hez2tp-0 bBZBLJ">553 places</p>
+          </div><i class="sc-rbbb40-1 iFnyeo sc-lcpuFF jVajnH" size="15" color="#1C1C1C"><svg
+              xmlns="http://www.w3.org/2000/svg" fill="#1C1C1C" width="15" height="15" viewBox="0 0 20 20"
+              aria-labelledby="icon-svg-title- icon-svg-desc-" role="img" class="sc-rbbb40-0 jKmKoK">
+              <title>chevron-right</title>
+              <path
+                d="M6.98 15.94c-0.3-0.28-0.3-0.76 0-1.060l4.46-4.46-4.46-4.48c-0.3-0.28-0.3-0.76 0-1.060s0.76-0.28 1.060 0l5 5c0.28 0.3 0.28 0.78 0 1.060l-5 5c-0.3 0.3-0.78 0.3-1.060 0z">
+              </path>
+            </svg></i>
+        </div>
+        </a>
+      </div>
+      <div class="sc-bke1zw-1 gGzIKR">
+        <div class="sc-jkCMRl eSgewU panel">
+          <div class="sc-bqjOQT FzDzU img-title-box">
+            <h5 class="sc-1uh2q3e-0 sc-gGCbJM cTLDgh">Bandra Kurla Complex</h5>
+            <p class="sc-1hez2tp-0 bBZBLJ">98 places</p>
+          </div><i class="sc-rbbb40-1 iFnyeo sc-lcpuFF jVajnH" size="15" color="#1C1C1C"><svg
+              xmlns="http://www.w3.org/2000/svg" fill="#1C1C1C" width="15" height="15" viewBox="0 0 20 20"
+              aria-labelledby="icon-svg-title- icon-svg-desc-" role="img" class="sc-rbbb40-0 jKmKoK">
+              <title>chevron-right</title>
+              <path
+                d="M6.98 15.94c-0.3-0.28-0.3-0.76 0-1.060l4.46-4.46-4.46-4.48c-0.3-0.28-0.3-0.76 0-1.060s0.76-0.28 1.060 0l5 5c0.28 0.3 0.28 0.78 0 1.060l-5 5c-0.3 0.3-0.78 0.3-1.060 0z">
+              </path>
+            </svg></i>
+        </div>
+        </a>
+      </div>
+      <div class="sc-bke1zw-1 jdRPl">
+        <div class="sc-jkCMRl eSgewU panel">
+          <div class="sc-bqjOQT FzDzU img-title-box">
+            <h5 class="sc-1uh2q3e-0 sc-gGCbJM cTLDgh">Vashi</h5>
+            <p class="sc-1hez2tp-0 bBZBLJ">542 places</p>
+          </div><i class="sc-rbbb40-1 iFnyeo sc-lcpuFF jVajnH" size="15" color="#1C1C1C"><svg
+              xmlns="http://www.w3.org/2000/svg" fill="#1C1C1C" width="15" height="15" viewBox="0 0 20 20"
+              aria-labelledby="icon-svg-title- icon-svg-desc-" role="img" class="sc-rbbb40-0 jKmKoK">
+              <title>chevron-right</title>
+              <path
+                d="M6.98 15.94c-0.3-0.28-0.3-0.76 0-1.060l4.46-4.46-4.46-4.48c-0.3-0.28-0.3-0.76 0-1.060s0.76-0.28 1.060 0l5 5c0.28 0.3 0.28 0.78 0 1.060l-5 5c-0.3 0.3-0.78 0.3-1.060 0z">
+              </path>
+            </svg></i>
+        </div>
+        </a>
+      </div>
+      <div class="sc-bke1zw-1 gLbmAn">
+        <div class="sc-jkCMRl eSgewU panel">
+          <div class="sc-bqjOQT FzDzU img-title-box">
+            <h5 class="sc-1uh2q3e-0 sc-gGCbJM cTLDgh">Fort</h5>
+            <p class="sc-1hez2tp-0 bBZBLJ">222 places</p>
+          </div><i class="sc-rbbb40-1 iFnyeo sc-lcpuFF jVajnH" size="15" color="#1C1C1C"><svg
+              xmlns="http://www.w3.org/2000/svg" fill="#1C1C1C" width="15" height="15" viewBox="0 0 20 20"
+              aria-labelledby="icon-svg-title- icon-svg-desc-" role="img" class="sc-rbbb40-0 jKmKoK">
+              <title>chevron-right</title>
+              <path
+                d="M6.98 15.94c-0.3-0.28-0.3-0.76 0-1.060l4.46-4.46-4.46-4.48c-0.3-0.28-0.3-0.76 0-1.060s0.76-0.28 1.060 0l5 5c0.28 0.3 0.28 0.78 0 1.060l-5 5c-0.3 0.3-0.78 0.3-1.060 0z">
+              </path>
+            </svg></i>
+        </div>
+        </a>
+      </div>
+      <div class="sc-bke1zw-1 gGzIKR">
+        <div class="sc-jkCMRl eSgewU panel">
+          <div class="sc-bqjOQT FzDzU img-title-box">
+            <h5 class="sc-1uh2q3e-0 sc-gGCbJM cTLDgh">Juhu</h5>
+            <p class="sc-1hez2tp-0 bBZBLJ">198 places</p>
+          </div><i class="sc-rbbb40-1 iFnyeo sc-lcpuFF jVajnH" size="15" color="#1C1C1C"><svg
+              xmlns="http://www.w3.org/2000/svg" fill="#1C1C1C" width="15" height="15" viewBox="0 0 20 20"
+              aria-labelledby="icon-svg-title- icon-svg-desc-" role="img" class="sc-rbbb40-0 jKmKoK">
+              <title>chevron-right</title>
+              <path
+                d="M6.98 15.94c-0.3-0.28-0.3-0.76 0-1.060l4.46-4.46-4.46-4.48c-0.3-0.28-0.3-0.76 0-1.060s0.76-0.28 1.060 0l5 5c0.28 0.3 0.28 0.78 0 1.060l-5 5c-0.3 0.3-0.78 0.3-1.060 0z">
+              </path>
+            </svg></i>
+        </div>
+        </a>
+      </div>
+      <div class="sc-bke1zw-1 jdRPl">
+        <div tabindex="0" class="sc-crNyjn jfyciY">
+          <div class="sc-cpHetk kAJnkK">See more</div><i class="sc-rbbb40-1 iFnyeo" size="18" color="#1C1C1C"><svg
+              xmlns="http://www.w3.org/2000/svg" fill="#1C1C1C" width="18" height="18" viewBox="0 0 20 20"
+              aria-labelledby="icon-svg-title- icon-svg-desc-" role="img" class="sc-rbbb40-0 iwHbVQ">
+              <title>chevron-right</title>
+              <path
+                d="M4.48 7.38c0.28-0.28 0.76-0.28 1.060 0l4.46 4.48 4.48-4.48c0.28-0.28 0.76-0.28 1.060 0s0.28 0.78 0 1.060l-5 5c-0.3 0.3-0.78 0.3-1.060 0l-5-5c-0.3-0.28-0.3-0.76 0-1.060z">
+              </path>
+            </svg></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <section class="container get__the_app">
+    <div class="semiContainer">
+      <div class="left">
+        <img src="images/mobileBanner.png" alt="banner" />
+      </div>
+      <div class="right">
+        <h1>Get the Zomato App</h1>
+
+        <p>
+          We will send you a link, open it on your phone to download the app.
+        </p>
+
+        <div class="radio__buttons_container">
+          <div>
+            <input type="radio" id="email" name="download_app" />
+            <label for="email" style="font-size: 14px">Email</label>
+          </div>
+          <div>
+            <input type="radio" id="phone" name="download_app" />
+            <label for="phone" style="font-size: 14px">Phone</label>
+          </div>
+        </div>
+
+        <div class="input_container">
+          <input type="text" placeholder="Email" />
+          <button>Share App Link</button>
+        </div>
+
+        <div class="download__app_container">
+          <h5>Download App From</h5>
+          <div>
+            <img src="images/playStore.png" alt="" />
+            <img src="images/appleStore.png" alt="" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="sc-hlILIN exnIlD">
+    <div class="sc-1mo3ldo-0 sc-bJHhxl dfHXPF">
+      <p class="sc-1hez2tp-0 sc-TuwoP clzaai">Explore options near me</p>
+      <div class="sc-jQMNup gJZknK">
+        <section class="sc-1jt9o4p-0 fVldHU">
+          <div title="Popular cuisines near me" class="sc-ixe81d-2 hferSp">
+            <div tabindex="0" role="button" aria-expanded="false" aria-label="Popular cuisines near me"
+              title="Popular cuisines near me" class="sc-ixe81d-6 hJDotl">
+              <section class="sc-ixe81d-8 ihgAwA">
+                <h5 class="sc-1uh2q3e-0 sc-ixe81d-7 hxeCJW">Popular cuisines near me</h5>
+              </section><i class="sc-rbbb40-1 iFnyeo sc-ixe81d-3 ipHUyL" color="#1C1C1C" tabindex="-1"
+                aria-hidden="true" size="20"><svg xmlns="http://www.w3.org/2000/svg" fill="#1C1C1C" width="20"
+                  height="20" viewBox="0 0 20 20" aria-labelledby="icon-svg-title- icon-svg-desc-" role="img"
+                  class="sc-rbbb40-0 iRDDBk">
+                  <title>chevron-down</title>
+                  <path
+                    d="M4.48 7.38c0.28-0.28 0.76-0.28 1.060 0l4.46 4.48 4.48-4.48c0.28-0.28 0.76-0.28 1.060 0s0.28 0.78 0 1.060l-5 5c-0.3 0.3-0.78 0.3-1.060 0l-5-5c-0.3-0.28-0.3-0.76 0-1.060z">
+                  </path>
+                </svg></i>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="sc-jQMNup gJZknK">
+        <section class="sc-1jt9o4p-0 fVldHU">
+          <div title="Popular restaurant types near me" class="sc-ixe81d-2 hferSp">
+            <div tabindex="0" role="button" aria-expanded="false" aria-label="Popular restaurant types near me"
+              title="Popular restaurant types near me" class="sc-ixe81d-6 hJDotl">
+              <section class="sc-ixe81d-8 ihgAwA">
+                <h5 class="sc-1uh2q3e-0 sc-ixe81d-7 hxeCJW">Popular restaurant types near me
+                </h5>
+              </section><i class="sc-rbbb40-1 iFnyeo sc-ixe81d-3 ipHUyL" color="#1C1C1C" tabindex="-1"
+                aria-hidden="true" size="20"><svg xmlns="http://www.w3.org/2000/svg" fill="#1C1C1C" width="20"
+                  height="20" viewBox="0 0 20 20" aria-labelledby="icon-svg-title- icon-svg-desc-" role="img"
+                  class="sc-rbbb40-0 iRDDBk">
+                  <title>chevron-down</title>
+                  <path
+                    d="M4.48 7.38c0.28-0.28 0.76-0.28 1.060 0l4.46 4.48 4.48-4.48c0.28-0.28 0.76-0.28 1.060 0s0.28 0.78 0 1.060l-5 5c-0.3 0.3-0.78 0.3-1.060 0l-5-5c-0.3-0.28-0.3-0.76 0-1.060z">
+                  </path>
+                </svg></i>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="sc-jQMNup gJZknK">
+        <section class="sc-1jt9o4p-0 fVldHU">
+          <div title="Top Restaurant Chains" class="sc-ixe81d-2 hferSp">
+            <div tabindex="0" role="button" aria-expanded="false" aria-label="Top Restaurant Chains"
+              title="Top Restaurant Chains" class="sc-ixe81d-6 hJDotl">
+              <section class="sc-ixe81d-8 ihgAwA">
+                <h5 class="sc-1uh2q3e-0 sc-ixe81d-7 hxeCJW">Top Restaurant Chains</h5>
+              </section><i class="sc-rbbb40-1 iFnyeo sc-ixe81d-3 ipHUyL" color="#1C1C1C" tabindex="-1"
+                aria-hidden="true" size="20"><svg xmlns="http://www.w3.org/2000/svg" fill="#1C1C1C" width="20"
+                  height="20" viewBox="0 0 20 20" aria-labelledby="icon-svg-title- icon-svg-desc-" role="img"
+                  class="sc-rbbb40-0 iRDDBk">
+                  <title>chevron-down</title>
+                  <path
+                    d="M4.48 7.38c0.28-0.28 0.76-0.28 1.060 0l4.46 4.48 4.48-4.48c0.28-0.28 0.76-0.28 1.060 0s0.28 0.78 0 1.060l-5 5c-0.3 0.3-0.78 0.3-1.060 0l-5-5c-0.3-0.28-0.3-0.76 0-1.060z">
+                  </path>
+                </svg></i>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="sc-jQMNup gJZknK">
+        <section class="sc-1jt9o4p-0 fVldHU">
+          <div title="Cities We Deliver To" class="sc-ixe81d-2 hferSp">
+            <div tabindex="0" role="button" aria-expanded="false" aria-label="Cities We Deliver To"
+              title="Cities We Deliver To" class="sc-ixe81d-6 hJDotl">
+              <section class="sc-ixe81d-8 ihgAwA">
+                <h5 class="sc-1uh2q3e-0 sc-ixe81d-7 hxeCJW">Cities We Deliver To</h5>
+              </section><i class="sc-rbbb40-1 iFnyeo sc-ixe81d-3 ipHUyL" color="#1C1C1C" tabindex="-1"
+                aria-hidden="true" size="20"><svg xmlns="http://www.w3.org/2000/svg" fill="#1C1C1C" width="20"
+                  height="20" viewBox="0 0 20 20" aria-labelledby="icon-svg-title- icon-svg-desc-" role="img"
+                  class="sc-rbbb40-0 iRDDBk">
+                  <title>chevron-down</title>
+                  <path
+                    d="M4.48 7.38c0.28-0.28 0.76-0.28 1.060 0l4.46 4.48 4.48-4.48c0.28-0.28 0.76-0.28 1.060 0s0.28 0.78 0 1.060l-5 5c-0.3 0.3-0.78 0.3-1.060 0l-5-5c-0.3-0.28-0.3-0.76 0-1.060z">
+                  </path>
+                </svg></i>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+  <footer class="footer">
+    <div class="footer_section1">
+      <img src="images/logo.png" alt="zomato logo" />
+      <div class="section1__buttonContainer">
+        <button>
+          <img src="https://flagcdn.com/w40/in.png" alt="India" style="width: 17px" />
+          India
+        </button>
+        <button>
+          <i class="fa fa-globe" aria-hidden="true"></i> English
+        </button>
+      </div>
+    </div>
+    <div class="navigation_container">
+      <div class="link__container">
+        <h5>ABOUT ZOMATO</h5>
+        <a class="footer__link" href="#">Who we are</a>
+        <a class="footer__link" href="#">Blogs</a>
+        <a class="footer__link" href="#">Work with us</a>
+        <a class="footer__link" href="#">Investor Relations</a>
+        <a class="footer__link" href="#">Report Fraud</a>
+      </div>
+
+      <div class="link__container">
+        <h5>ZOMAVERSE</h5>
+        <a class="footer__link" href="#">Zomato</a>
+        <a class="footer__link" href="#">Feeding India</a>
+        <a class="footer__link" href="#">Hyperpuer</a>
+        <a class="footer__link" href="#">Zomaland</a>
+      </div>
+
+      <div class="link__container">
+        <h5>FOR RESTAURANTS</h5>
+        <a class="footer__link" href="#">Partner With Us</a>
+        <a class="footer__link" href="#">App For You</a>
+        <br />
+        <h5>FOR ENTERPRISES</h5>
+        <a class="footer__link" href="#">Zomato For Work</a>
+      </div>
+
+      <div class="link__container">
+        <h5>LERN MORE</h5>
+        <a class="footer__link" href="#">Privacy</a>
+        <a class="footer__link" href="#">Security</a>
+        <a class="footer__link" href="#">Terms</a>
+        <a class="footer__link" href="#">Sitemap</a>
+      </div>
+
+      <div class="link__container">
+        <h5>SOCIAL LINKS</h5>
+        <div class="social__links_container">
+          <button><i class="fa-brands fa-linkedin-in"></i></button>
+          <button><i class="fa-brands fa-instagram"></i></button>
+          <button><i class="fa-brands fa-twitter"></i></button>
+          <button><i class="fa-brands fa-youtube"></i></button>
+          <button><i class="fa-brands fa-facebook-f"></i></button>
+        </div>
+        <br />
+        <img src="images/appleStore.png" alt="" class="footer__store_logos" />
+        <img src="images/playStore.png" alt="" class="footer__store_logos" />
+      </div>
+    </div>
+    <p class="disclamer">
+      By continuing past this page, you agree to our Terms of Service, Cookie
+      Policy, Privacy Policy and Content Policies. All trademarks are
+      properties of their respective owners. 2008-2022 © Zomato™ Ltd. All
+      rights reserved.
+    </p>
+  </footer>
+</body>
+
+</html>
